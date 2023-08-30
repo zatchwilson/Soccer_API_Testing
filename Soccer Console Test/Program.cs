@@ -688,7 +688,7 @@ namespace Soccer_Console_Test
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams?id=33"),
+                RequestUri = new Uri("https://api-football-v1.p.rapidapi.com/v3/teams/statistics?league=39&season=2020&team=33"),
                 Headers =
                 {
                     { "X-RapidAPI-Key", apiKey },
@@ -709,7 +709,8 @@ namespace Soccer_Console_Test
                 {
                     response.EnsureSuccessStatusCode();
                     var body = await response.Content.ReadAsStringAsync();
-                    data = JsonConvert.DeserializeObject<Data>(System.IO.File.ReadAllText("TeamTest.json"));
+                    //data = JsonConvert.DeserializeObject<Data>(System.IO.File.ReadAllText("TeamTest.json"));
+                    data = JsonConvert.DeserializeObject<Data>(body);
                 }
             }
 
